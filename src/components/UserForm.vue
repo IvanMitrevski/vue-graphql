@@ -41,7 +41,8 @@ export default {
           name,
           twitter,
           rocket
-        }
+        },
+        refetchQueries: ['getUsers']
       })
     }
   }
