@@ -43,12 +43,27 @@ export default {
           twitter,
           rocket
         },
-        update: (cache,{data: {insert_users}})=>{
+        update: (cache, {data: {insert_users}}) => {
           const [newUser] = insert_users.returning;
           const data = cache.readQuery({query: GET_USERS})
           data.users.unshift(newUser)
           data.users.pop()
           cache.writeQuery({query: GET_USERS, data})
+        },
+        optimisticResponse: {
+          __typename: "Mutation",
+          insert_users: {
+            __typename: "users_mutation_response",
+            returning: [
+              {
+                __typename: "users",
+                id: -1,
+                name,
+                twitter,
+                rocket
+              }
+            ]
+          }
         }
       })
     }

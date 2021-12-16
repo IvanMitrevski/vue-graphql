@@ -3,6 +3,7 @@
     <li v-for="user in users" :key="user.id">
       <div
         class="user"
+
         :style="{ opacity: user.id === -1 ? '0.5' : 'initial' }"
       >
         <p class="name">👤 {{ user.name }}</p>
