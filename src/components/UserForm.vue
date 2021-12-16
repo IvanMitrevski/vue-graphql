@@ -66,6 +66,19 @@ export default {
           }
         }
       })
+          .then(data => {
+            console.log("User data: ", data)
+          })
+          .catch(error => {
+            console.log(error)
+          })
+          .then(() => {
+            Object.assign(this.$data, {
+              name: '',
+              twitter: '',
+              rocket: ''
+            })
+          })
     }
   }
 }
